@@ -1,5 +1,6 @@
 package br.com.wpaes.imc
 
+import java.util.*
 import kotlin.math.pow
 
 class BMI(var height: Double, var weight: Double) {
@@ -15,7 +16,8 @@ class BMI(var height: Double, var weight: Double) {
     }
 
     fun calculate() {
-        result = weight / height.pow(2.0)
+        var result = weight / height.pow(2.0)
+        this.result = result.toString().format(Locale.FRANCE, "%.2f", result).toDouble()
     }
 
     fun setClassificationAndObesity() {

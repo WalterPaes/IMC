@@ -6,4 +6,6 @@
 
     <string name="btn_calculate">Calcular</string>
     <string name="btn_clear">Limpar</string>
+
+    <string name="blank">%d</string>
 </resources>
