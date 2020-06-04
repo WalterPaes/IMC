@@ -16,8 +16,7 @@ class MainActivity : AppCompatActivity() {
         val btnCalculate = findViewById<Button>(R.id.btnCalculate)
         val txtHeight = findViewById<TextView>(R.id.txtHeight)
         val txtWeight = findViewById<TextView>(R.id.txtWeight)
-
-        //txtHeight.addTextChangedListener(Mask)
+        val btnClear = findViewById<Button>(R.id.btnClear)
 
         btnCalculate.setOnClickListener {
             val height = txtHeight.text.toString()
@@ -41,5 +40,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnClear.setOnClickListener {
+            txtHeight.text = ""
+            txtWeight.text = ""
+        }
     }
 }
