@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import java.util.*
 
 class ResultActivity : AppCompatActivity() {
 
@@ -22,16 +23,16 @@ class ResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
         // Create the Page with Data
-        val result = intent.getStringExtra(BMI_RESULT)
+        val result = intent.getDoubleExtra(BMI_RESULT, -1.0)
         val classification = intent.getStringExtra(BMI_CLASSIFICATION)
         val obesity = intent.getStringExtra(BMI_OBESITY)
-        val img = intent.getStringExtra(BMI_IMG)
+        val img = intent.getIntExtra(BMI_IMG, -1)
 
         val txtResult = findViewById<TextView>(R.id.txtResult)
         val imgResult = findViewById<ImageView>(R.id.imgResult)
 
-        txtResult.text = "IMC: $result \nCLASSIFICAÇÃO: $classification \nGRAU DE OBESIDADE: $obesity"
-        imgResult.setImageResource(img.toInt())
+        txtResult.text = "IMC: ${"%.2f".format(result)} \nCLASSIFICAÇÃO: $classification \nGRAU DE OBESIDADE: $obesity"
+        imgResult.setImageResource(img)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         val txtHeight = findViewById<TextView>(R.id.txtHeight)
         val txtWeight = findViewById<TextView>(R.id.txtWeight)
 
+        //txtHeight.addTextChangedListener(Mask)
+
         btnCalculate.setOnClickListener {
             val height = txtHeight.text.toString()
             val weight = txtWeight.text.toString()

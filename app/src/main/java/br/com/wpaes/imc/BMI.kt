@@ -16,8 +16,7 @@ class BMI(var height: Double, var weight: Double) {
     }
 
     fun calculate() {
-        var result = weight / height.pow(2.0)
-        this.result = result.toString().format(Locale.FRANCE, "%.2f", result).toDouble()
+        this.result = weight / height.pow(2.0)
     }
 
     fun setClassificationAndObesity() {
