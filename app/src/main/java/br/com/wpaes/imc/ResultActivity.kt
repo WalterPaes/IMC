@@ -32,6 +32,7 @@ class ResultActivity : AppCompatActivity() {
         val imgResult = findViewById<ImageView>(R.id.imgResult)
 
         txtResult.text = "IMC: ${"%.2f".format(result)} \nCLASSIFICAÇÃO: $classification \nGRAU DE OBESIDADE: $obesity"
+        imgResult.contentDescription = classification
         imgResult.setImageResource(img)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
