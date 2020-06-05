@@ -9,18 +9,22 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
+    private var txtHeight: TextView? = null
+    private var txtWeight: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val btnCalculate = findViewById<Button>(R.id.btnCalculate)
-        val txtHeight = findViewById<TextView>(R.id.txtHeight)
-        val txtWeight = findViewById<TextView>(R.id.txtWeight)
         val btnClear = findViewById<Button>(R.id.btnClear)
 
+        this.txtHeight = findViewById(R.id.txtHeight)
+        this.txtWeight = findViewById(R.id.txtWeight)
+
         btnCalculate.setOnClickListener {
-            val height = txtHeight.text.toString()
-            val weight = txtWeight.text.toString()
+            val height = txtHeight?.text.toString()
+            val weight = txtWeight?.text.toString()
 
             // Check if the fields are not null
             if (height.isEmpty() || weight.isEmpty()) {
@@ -41,8 +45,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnClear.setOnClickListener {
-            txtHeight.text = ""
-            txtWeight.text = ""
+            txtHeight?.text = ""
+            txtWeight?.text = ""
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putCharSequence("HEIGHT", this.txtHeight?.text)
+        outState.putCharSequence("WEIGHT", this.txtWeight?.text)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        this.txtHeight?.text = savedInstanceState.getCharSequence("HEIGHT")
+        this.txtWeight?.text = savedInstanceState.getCharSequence("WEIGHT")
     }
 }
